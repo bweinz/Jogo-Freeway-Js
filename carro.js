@@ -1,44 +1,31 @@
-//Carro 1 Posição
-let xCarro = 600
-let yCarro = 40
-let velocidadeCarro1 = 2
+//código do carro
 
+let xCarros = [600, 600, 600, 600, 600, 600];
+let yCarros = [40, 96, 150, 210, 270, 318];
+let velocidadeCarros = [2, 2.5, 3.2, 5, 3.3, 2.3];
+let comprimentoCarro = 50;
+let alturaCarro = 40;
 
-//Carro 2 Posição
-let xCarro2 = 600
-let yCarro2 = 96
-let velocidadeCarro2 = 2.5
-
-//Carro 3 Posição
-let xCarro3 = 600
-let yCarro3 = 150
-let velocidadeCarro3 = 3.2
-
-
-
-
-function movimentaCarro (){
-  xCarro -= velocidadeCarro1;
-  xCarro2 -= velocidadeCarro2;
-  xCarro3 -= velocidadeCarro3;
+function mostraCarro(){
+  for (let i = 0; i < imagemCarros.length; i++){
+    image(imagemCarros[i], xCarros[i], yCarros[i], comprimentoCarro, alturaCarro);
   }
+}
 
-function mostraCarro() {
-  image(imagemCarro,xCarro,yCarro,50,40)
-  image(imagemCarro2,xCarro2,yCarro2,50,40)
-  image(imagemCarro3,xCarro3,yCarro3,50,40)
- 
+function movimentaCarro(){
+  for (let i = 0; i < imagemCarros.length; i++){
+    xCarros[i] -= velocidadeCarros[i];
+  }
 }
 
 function voltaPosicaoInicialDoCarro(){
-  if (xCarro < -50){
-    xCarro = 600
+  for (let i = 0; i < imagemCarros.length; i++){
+    if (passouTodaATela(xCarros[i])){
+      xCarros[i] = 600;
+    }
   }
-      if (xCarro2 < -50){
-      xCarro2 = 600
-  }
-        if (xCarro3 < -50){
-        xCarro3 = 600
-  }
-  
+}
+
+function passouTodaATela(xCarro){
+  return xCarro < - 50;
 }
